@@ -1,0 +1,52 @@
+{% extends 'budget/base.html' %}
+
+
+{% block title %}
+Create Finance
+{% endblock title %}
+{% block content %}
+<br>
+<div class="container">
+   <h1 class="text-center mb-5">My Accounts</h1>
+   <div class="row row-cols-1 row-cols-md-3 g-4">
+     {% for project in project_list %}
+     <div class="col">
+       <div class="card h-100">
+         <div class="card-body">
+           <h5 class="card-title">{{ project.name }}</h5>
+           <a href="{% url 'detail' project.slug %}" class="btn btn-primary">Visit</a>
+         </div>
+       </div>
+     </div>
+     {% empty %}
+     <div class="col">
+       <div class="card h-100 bg-light text-center">
+         <div class="card-body">
+           <h3 class="card-title text-muted">Sorry, You don't have created any Finance History, yet.</h3>
+         </div>
+       </div>
+     </div>
+     {% endfor %}
+     <div class="col">
+       <div class="btn btn-lg card h-100 bg-success text-center">
+         <div class="card-body">
+           <a href="{% url 'add' %}" class="btn-dark bg-success" style="text-decoration: none;">
+               <i class="fa-solid fa-circle-plus"></i><h3 class="card-title text-light">Create New Finance</h3>
+           </a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+  <style>
+   body {
+     background-color: #f8f9fa;
+   }
+  
+   .btncreate {
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+     width: 100%;
+   }
+ </style>
+{% endblock content %}
